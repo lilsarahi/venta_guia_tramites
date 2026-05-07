@@ -1,0 +1,29 @@
+{
+    "slug": "visa-adulto-primera-vez",
+    "nombre": "Visa Adulto Primera Vez",
+    "descripcion_corta": "Conoce los documentos indispensables para tu entrevista consular de visa americana.",
+    "precio": 49.00,
+    "activo": true,
+    "gancho": "Además de tu DS-160 y pasaporte mexicano, conoce cuáles son los documentos indispensables para tu entrevista. Aquí te dejamos una guía básica y rápida para que tu trámite sea exitoso.",
+    "informacion_general": "Recuerda que la entrevista consular es muy importante. Se recomienda vestimenta formal y presentar la mayor cantidad de documentos posible.",
+    "categorias_documentos": [
+        {
+            "titulo": "Documentos requeridos",
+            "documentos": [
+                "Formato DS-160",
+                "Confirmación de cita",
+                "Pasaporte mexicano vigente",
+                "Documentos que comprueben lazos en México: estados de cuenta bancarios, carta laboral, nóminas, acta de matrimonio, predial, tarjeta de circulación, acta de divorcio, acta de defunción, cédula profesional, constancia de estudios, RFC, constancia de situación fiscal, pagos de impuestos, visa de algún familiar, credencial de empleado"
+            ]
+        }
+    ],
+    "avisos": ["No todas las personas tienen todos los documentos, asegúrate de llevar la mayor cantidad que puedas reunir."],
+    "preguntas_frecuentes": [
+        "¿A qué quieren ir?",
+        "¿A qué te estás dedicando?",
+        "¿Fecha probable de viaje?"
+    ],
+    "nota_preguntas": "Recuerda siempre ser honesto.",
+    "liga_oficial": null,
+    "video": ""
+}

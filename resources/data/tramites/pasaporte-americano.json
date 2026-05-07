@@ -1,0 +1,31 @@
+{
+    "slug": "pasaporte-americano",
+    "nombre": "Pasaporte Americano",
+    "descripcion_corta": "Todo ciudadano americano puede obtener su pasaporte desde México.",
+    "precio": 49.00,
+    "activo": true,
+    "gancho": "Recuerda que todo ciudadano americano (por nacimiento o naturalización) puede obtener su Pasaporte Americano desde México, siempre y cuando tenga estos documentos…",
+    "informacion_general": "El día de la cita es muy importante llevar los documentos que se indican a continuación. De todo llevar original y copia. Recuerda que es un derecho que tienes como ciudadano americano.",
+    "categorias_documentos": [
+        {
+            "titulo": "Documentos requeridos",
+            "documentos": [
+                "Acta de nacimiento o certificado de naturalización",
+                "Seguro social",
+                "Formularios DS-11 o DS-82",
+                "Identificación oficial (mayores de edad)",
+                "2 fotos de 5x5 cm, a color y fondo blanco (de estudio)",
+                "Menores de edad: ambos padres con identificación",
+                "$165 dólares para primera vez adultos",
+                "$135 dólares para renovación de adulto y primera vez de menor",
+                "Comprobante de cita",
+                "Cualquier documento extra que avale que eres ciudadano de EUA"
+            ]
+        }
+    ],
+    "avisos": ["Tu pasaporte te lo envían a una sucursal de DHL, prepárate para saber cuál es la más cercana."],
+    "preguntas_frecuentes": [],
+    "nota_preguntas": null,
+    "liga_oficial": null,
+    "video": ""
+}

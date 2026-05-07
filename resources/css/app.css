@@ -1,0 +1,799 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom right, #051547, #dbeafe);
+    min-height: 100vh;
+    color: #1f2937;
+}
+
+/* HEADER */
+header {
+    background: #f6f2f2;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+header .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 22px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    font-size: 20px;
+    color: #d41212;
+}
+
+.logo-icon {
+    height: 64px;
+    width: auto;
+}
+
+header span {
+    font-size: 16px;
+    color: #555;
+}
+
+/* NAV */
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #1f2937;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #4f46e5;
+}
+
+/* BOTÓN HAMBURGUESA */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+}
+
+/* HERO */
+.hero {
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px 24px;
+    text-align: center;
+}
+
+.hero h2 {
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.hero h1 {
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 800;
+    margin-top: 8px;
+}
+
+.hero h2 {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 16px;
+}
+
+.hero span {
+    color: #cac9d6;
+}
+
+.hero p {
+    max-width: 600px;
+    margin: auto;
+    color: #f0f1f3;
+}
+
+.hero-extra {
+    max-width: 700px;
+    margin: 24px auto 0;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #ffffff;
+    font-weight: 400;
+}
+
+/* HERO BANNER CON IMAGEN */
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(4px) brightness(0.7);
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 1;
+    width: 90%;
+}
+
+.hero-text h2 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.hero-text h1 {
+    font-size: 36px;
+    margin: 8px 0 0;
+    font-weight: 800;
+}
+
+/* TARJETAS */
+.section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 24px 80px;
+}
+
+.section h3 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 40px;
+    color: #ffffff;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+@media (max-width: 1024px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: transform .3s, box-shadow .3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+.card-image {
+    background: #f0ede8;
+    border-bottom: 1px solid #ddd8d0;
+    padding: 22px 20px 18px;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.card-tag::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #f4f2ef85;
+    flex-shrink: 0;
+}
+
+.card-tag span {
+    font-size: 11px;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.card-gancho {
+    font-size: 16px;
+    color: #040404;
+    line-height: 1.6;
+    margin: 0;
+}
+.card-content {
+    padding: 24px;
+}
+
+.card-content h4 {
+    margin: 0 0 8px;
+    font-size: 18px;
+}
+
+.card-content p {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 16px;
+}
+
+.card-content button {
+    background: #091d55;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+}
+
+.card-content button:hover {
+    background: #050414;
+}
+
+/* ── PÁGINA DETALLE DE TRÁMITE ── */
+.detalle-wrap {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 24px 80px;
+}
+
+.breadcrumb {
+    font-size: 13px;
+    color: #cbd5e1;
+    margin-bottom: 20px;
+}
+
+.breadcrumb a {
+    color: #93c5fd;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover { text-decoration: underline; }
+
+.detalle-titulo {
+    font-size: 28px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.detalle-descripcion {
+    background: rgba(255,255,255,0.12);
+    border-left: 4px solid #93c5fd;
+    border-radius: 8px;
+    padding: 16px 20px;
+    color: #f1f5f9;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+/* Caja de acceso desbloqueado */
+.badge-desbloqueado {
+    background: #d1fae5;
+    border: 1px solid #6ee7b7;
+    border-radius: 10px;
+    padding: 12px 18px;
+    color: #065f46;
+    font-size: 14px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Botón descarga PDF */
+.btn-pdf {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #091d55;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    margin-bottom: 24px;
+    transition: background .2s;
+}
+
+.btn-pdf:hover { background: #050414; }
+
+/* Contenido completo del trámite */
+.contenido-tramite {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    padding: 32px;
+}
+
+.contenido-tramite h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #091d55;
+    margin: 20px 0 8px;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 6px;
+}
+
+.contenido-tramite h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1d4ed8;
+    margin: 16px 0 6px;
+}
+
+.contenido-tramite ul,
+.contenido-tramite ol {
+    padding-left: 20px;
+    margin: 6px 0 14px;
+}
+
+.contenido-tramite li { margin-bottom: 5px; line-height: 1.6; }
+
+.contenido-tramite table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 14px;
+}
+
+.contenido-tramite th {
+    background: #091d55;
+    color: white;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.contenido-tramite td {
+    padding: 7px 12px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.contenido-tramite tr:nth-child(even) td { background: #f8fafc; }
+
+.contenido-tramite p { margin: 6px 0 12px; line-height: 1.7; }
+
+.contenido-tramite strong { color: #091d55; }
+
+/* Caja de bloqueo con precio */
+.caja-pago {
+    background: white;
+    border: 2px solid #091d55;
+    border-radius: 16px;
+    padding: 36px 32px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.caja-pago .lock-icon { font-size: 40px; margin-bottom: 12px; }
+
+.caja-pago h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 8px;
+}
+
+.caja-pago .subtexto {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 20px;
+}
+
+.caja-pago .precio-grande {
+    font-size: 42px;
+    font-weight: 800;
+    color: #091d55;
+    line-height: 1;
+}
+
+.caja-pago .moneda {
+    font-size: 16px;
+    color: #9ca3af;
+    font-weight: 400;
+}
+
+.caja-pago .nota-precio {
+    font-size: 12px;
+    color: #9ca3af;
+    margin: 6px 0 24px;
+}
+
+.caja-pago button {
+    background: #091d55;
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    max-width: 340px;
+    transition: background .2s;
+}
+
+.caja-pago button:hover { background: #050414; }
+
+.sellos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 18px;
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+/* Preview borrosa */
+.preview-blur {
+    background: white;
+    border-radius: 16px;
+    padding: 24px 32px;
+    max-height: 180px;
+    overflow: hidden;
+    filter: blur(4px);
+    user-select: none;
+    pointer-events: none;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+/* Incluye lo que viene */
+.incluye {
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 20px;
+    color: #f1f5f9;
+}
+
+.incluye h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #e2e8f0;
+}
+
+.incluye ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+.incluye ul li::before {
+    content: "✓ ";
+    color: #34d399;
+    font-weight: 700;
+}
+
+
+
+
+
+
+.btn-comenzar {
+    flex: 1;
+    display: block;
+    background: #091d55;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background .2s;
+}
+
+.btn-comenzar:hover {
+    background: #01040e;
+}
+
+/* formulario de solicitud */
+
+.campo-form {
+    margin-bottom: 18px;
+}
+
+.campo-form label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 6px;
+}
+
+.campo-form input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #1f2937;
+    background: #f9fafb;
+    box-sizing: border-box;
+    transition: border .2s;
+}
+
+.campo-form input:focus {
+    outline: none;
+    border-color: #091d55;
+    background: #ffffff;
+}
+
+/* ── SOLICITUD ── */
+/* ── SOLICITUD ── */
+.direccion-separador {
+    border-top: 1px solid #e5e7eb;
+    margin: 20px 0 16px;
+    padding-top: 16px;
+}
+
+.direccion-titulo {
+    font-size: 13px;
+    font-weight: 700;
+    color: #091d55;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.grid-cp {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 12px;
+    align-items: start;
+}
+
+.btn-enviar {
+    flex: 1;
+    background: #091d55;
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s;
+}
+
+.btn-enviar:hover {
+    background: #050414;
+}
+
+.btn-cancelar {
+    flex: 1;
+    background: transparent;
+    color: #6b7280;
+    border: 1px solid #d1d5db;
+    padding: 14px 32px;
+    border-radius: 999px;
+    font-size: 15px;
+    text-decoration: none;
+    text-align: center;
+    transition: background .2s;
+}
+
+.btn-cancelar:hover {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.form-acciones {
+    margin-top: 28px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* ALERTAS FLASH */
+.alert {
+    max-width: 1200px;
+    margin: 16px auto;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.alert-success {
+    background: #d1fae5;
+    color: #065f46;
+    border-left: 4px solid #10b981;
+}
+
+.alert-error {
+    background: #fee2e2;
+    color: #991b1b;
+    border-left: 4px solid #ef4444;
+}
+
+.alert-info {
+    background: #dbeafe;
+    color: #1e40af;
+    border-left: 4px solid #3b82f6;
+}
+
+/* email */
+.mensaje-enviado {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.enviado-icono {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.mensaje-enviado h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #091d55;
+    margin-bottom: 10px;
+}
+
+.mensaje-enviado p {
+    font-size: 15px;
+    color: #6b7280;
+    margin-bottom: 6px;
+}
+
+.enviado-costo strong {
+    color: #d41212;
+    font-size: 16px;
+}
+
+.nota-envio {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.nota-envio p {
+    font-size: 13px;
+    color: #6b7280;
+    margin: 0 0 6px;
+}
+
+.nota-costo {
+    font-size: 15px !important;
+    color: #091d55 !important;
+}
+
+.nota-costo strong {
+    font-size: 18px;
+    color: #d41212;
+}
+
+/* video */
+.btn-video {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #d41212;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    margin-bottom: 24px;
+    cursor: pointer;
+    transition: background .2s;
+    margin-left: 10px;
+}
+
+.btn-video:hover {
+    background: #a50e0e;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    font-size: 14px;
+    color: #6b7280;
+    padding: 24px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    nav {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo-title {
+        justify-content: center;
+    }
+
+    .hero-banner {
+        height: 220px;
+    }
+
+    .hero-text h1 {
+        font-size: 28px;
+    }
+
+    .hero-text h2 {
+        font-size: 18px;
+    }
+
+    .incluye ul {
+        grid-template-columns: 1fr;
+    }
+
+    .contenido-tramite {
+        padding: 20px;
+    }
+
+    .caja-pago {
+        padding: 24px 20px;
+    }
+}

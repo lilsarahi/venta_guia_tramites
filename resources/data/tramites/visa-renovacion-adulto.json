@@ -1,0 +1,25 @@
+{
+    "slug": "visa-renovacion-adulto",
+    "nombre": "Visa Renovación Automática Adulto",
+    "descripcion_corta": "Si tu visa tiene menos de 12 meses de vencida, puedes renovarla sin entrevista.",
+    "precio": 49.00,
+    "activo": true,
+    "gancho": "¿Sabías que no tendrás entrevista si cuentas con esto? Si tu visa no lleva más de 12 meses de vencida, puedes calificar para renovarla de manera fácil y sencilla. Aquí te dejamos una guía rápida para tu renovación.",
+    "informacion_general": "Después de asistir a tu cita en el CAS, tu visa tarda alrededor de 8 semanas en llegar. Estar atento al correo para poder recogerla. Puedes recogerla en el CAS o en DHL pagando $320 pesos.",
+    "categorias_documentos": [
+        {
+            "titulo": "Documentos requeridos",
+            "documentos": [
+                "DS-160 (muy importante saber cómo se llenó)",
+                "Pasaporte mexicano vigente",
+                "Visa anterior",
+                "Comprobante de cita"
+            ]
+        }
+    ],
+    "avisos": [],
+    "preguntas_frecuentes": [],
+    "nota_preguntas": null,
+    "liga_oficial": null,
+    "video": ""
+}

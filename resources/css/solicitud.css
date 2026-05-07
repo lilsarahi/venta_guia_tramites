@@ -1,0 +1,102 @@
+/* ── SOLICITUD ── */
+.direccion-separador {
+    border-top: 1px solid #e5e7eb;
+    margin: 20px 0 16px;
+    padding-top: 16px;
+}
+
+.direccion-titulo {
+    font-size: 13px;
+    font-weight: 700;
+    color: #091d55;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.grid-cp {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 12px;
+    align-items: start;
+}
+
+.campo-form select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #1f2937;
+    background: #f9fafb;
+    box-sizing: border-box;
+    transition: border .2s;
+}
+
+.campo-form select:focus {
+    outline: none;
+    border-color: #091d55;
+    background: #ffffff;
+}
+
+.input-readonly {
+    background: #f3f4f6 !important;
+    color: #6b7280 !important;
+    cursor: not-allowed;
+}
+
+.cp-mensaje {
+    font-size: 11px;
+    color: #9ca3af;
+    display: none;
+    margin-top: 4px;
+    display: block;
+}
+
+.btn-enviar {
+    flex: 1;
+    background: #091d55;
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s;
+}
+
+.btn-enviar:hover {
+    background: #050414;
+}
+
+.btn-cancelar {
+    flex: 1;
+    background: transparent;
+    color: #6b7280;
+    border: 1px solid #d1d5db;
+    padding: 14px 32px;
+    border-radius: 999px;
+    font-size: 15px;
+    text-decoration: none;
+    text-align: center;
+    transition: background .2s;
+}
+
+.btn-cancelar:hover {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.form-acciones {
+    margin-top: 28px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}

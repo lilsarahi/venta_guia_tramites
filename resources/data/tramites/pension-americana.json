@@ -1,0 +1,40 @@
+{
+    "slug": "pension-americana",
+    "nombre": "Pensión Americana",
+    "descripcion_corta": "Si trabajaste en EUA con Seguro Social americano, puedes tener derecho a una pensión.",
+    "precio": 49.00,
+    "activo": true,
+    "gancho": "Si tú o algún familiar trabajaron en Estados Unidos con un número de Seguro Social Americano oficial, tienen derecho a recibir una pensión bajo ciertas condiciones. Si quieres saber más o comenzar tu petición, ingresa…",
+    "informacion_general": "Te dejamos una guía básica de los documentos que debes llevar según el tipo de pensión que estés tramitando. De todo llevar original y copia.",
+    "categorias_documentos": [
+        {
+            "titulo": "Pensión por viudez",
+            "documentos": [
+                "Acta de defunción del cónyuge",
+                "Número de Seguro Social del cónyuge",
+                "Acta de matrimonio",
+                "Acta de nacimiento (en caso de tener hijos menores de 18 años)",
+                "Cita enviada por la oficina de beneficios federales",
+                "Acta de nacimiento propia",
+                "INE",
+                "Cuenta de banco mexicana (donde recibirás la pensión)"
+            ]
+        },
+        {
+            "titulo": "Pensión por años de trabajo",
+            "documentos": [
+                "Número de Seguro Social",
+                "INE",
+                "Cuenta de banco mexicana",
+                "Documentos que avalen tu récord laboral (taxes, talones de cheque, W2, etc.)",
+                "Cita enviada por la oficina de beneficios federales",
+                "Acta de nacimiento"
+            ]
+        }
+    ],
+    "avisos": [],
+    "preguntas_frecuentes": [],
+    "nota_preguntas": null,
+    "liga_oficial": null,
+    "video": ""
+}

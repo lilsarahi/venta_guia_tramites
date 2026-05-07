@@ -1,0 +1,50 @@
+{
+    "slug": "pasaporte-mexicano",
+    "nombre": "Pasaporte Mexicano",
+    "descripcion_corta": "Todo lo que necesitas saber para obtener o renovar tu pasaporte mexicano.",
+    "precio": 49.00,
+    "activo": true,
+    "gancho": "Recuerda que el trámite de pasaporte mexicano es un derecho que tenemos todos los mexicanos, más sin embargo es necesario agendar cita y llevar los siguientes documentos para que todo salga bien…",
+    "informacion_general": "Toda persona que necesite su pasaporte mexicano deberá agendar una cita. Una vez agendada, te enviarán un correo con la confirmación de la cita, el pago que se debe hacer y un formato que se llena. Ya teniendo la cita, debes presentarte con los documentos correspondientes.",
+    "categorias_documentos": [
+        {
+            "titulo": "Primera vez — Adultos",
+            "documentos": [
+                "INE",
+                "CURP",
+                "Acta de nacimiento original",
+                "Comprobante de cita",
+                "Pago ya hecho"
+            ]
+        },
+        {
+            "titulo": "Renovación — Adultos",
+            "documentos": [
+                "INE",
+                "CURP",
+                "Pasaporte anterior",
+                "Comprobante de cita",
+                "Pago ya hecho"
+            ]
+        },
+        {
+            "titulo": "Primera vez y renovación — Menores de 18 años",
+            "documentos": [
+                "CURP",
+                "Acta de nacimiento original",
+                "Ambos padres con identificación oficial",
+                "Constancia de estudios o de pediatra con foto",
+                "Comprobante de cita",
+                "Pago ya hecho",
+                "Si es renovación: llevar también el pasaporte anterior"
+            ]
+        }
+    ],
+    "avisos": [
+        "Si estás tramitando para algún menor, siempre deben presentarse ambos padres."
+    ],
+    
+    "liga_oficial": "https://citas.sre.gob.mx",
+    "video": ""
+
+}

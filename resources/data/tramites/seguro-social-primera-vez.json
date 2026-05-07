@@ -1,0 +1,27 @@
+{
+    "slug": "seguro-social-primera-vez",
+    "nombre": "Seguro Social Americano — Primera Vez",
+    "descripcion_corta": "Si te acabas de hacer ciudadano americano, tramita tu Número de Seguro Social.",
+    "precio": 49.00,
+    "activo": true,
+    "gancho": "Recuerda que si te acabas de hacer ciudadano americano, es necesario que tramites tu Número de Seguro Social. Aquí te mostramos la información necesaria para que comiences a gozar sus beneficios.",
+    "informacion_general": "Te dejamos una guía rápida y sencilla para que no se te olvide ningún documento el día de tu cita.",
+    "categorias_documentos": [
+        {
+            "titulo": "Documentos requeridos",
+            "documentos": [
+                "Pasaporte Americano vigente",
+                "Acta de nacimiento o certificado de naturalización",
+                "INE y Pasaporte Americano de padre o madre (en caso de ser menor de edad)",
+                "Domicilio y teléfono donde deseas recibir tu Seguro Social",
+                "Formato enviado por la oficina de beneficios federales",
+                "Cita enviada por la oficina de beneficios federales"
+            ]
+        }
+    ],
+    "avisos": [],
+    "preguntas_frecuentes": [],
+    "nota_preguntas": null,
+    "liga_oficial": null,
+    "video": ""
+}

@@ -1,0 +1,84 @@
+@page {
+    size: letter;
+    margin-top: 70pt;
+    margin-bottom: 80pt;
+    margin-left: 45pt;
+    margin-right: 45pt;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12pt;
+    color: #1f2937;
+    line-height: 1.7;
+}
+
+.contenido {
+    padding: 0;
+}
+
+.tramite-titulo {
+    font-size: 20pt;
+    font-weight: 700;
+    color: #091d55;
+    border-bottom: 2pt solid #d41212;
+    padding-bottom: 6pt;
+    margin-bottom: 16pt;
+}
+
+.info-general {
+    background: #f5f3ee;
+    border-left: 4pt solid #091d55;
+    padding: 10pt 14pt;
+    margin-bottom: 18pt;
+    font-size: 11pt;
+    line-height: 1.7;
+    color: #374151;
+}
+
+h3 {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #1d4ed8;
+    margin: 14pt 0 6pt;
+}
+
+ul {
+    padding-left: 16pt;
+    margin-bottom: 10pt;
+}
+
+ul li {
+    margin-bottom: 5pt;
+    line-height: 1.6;
+    font-size: 11pt;
+    color: #1f2937;
+}
+
+.aviso {
+    background: #fff3cd;
+    border-left: 4pt solid #f59e0b;
+    padding: 8pt 12pt;
+    margin-top: 16pt;
+    font-size: 10pt;
+    color: #92400e;
+}
+
+.preguntas-nota {
+    font-style: italic;
+    color: #6b7280;
+    margin-top: 5pt;
+    font-size: 10pt;
+}
+
+.liga {
+    margin-top: 16pt;
+    font-size: 10pt;
+    color: #1d4ed8;
+}
