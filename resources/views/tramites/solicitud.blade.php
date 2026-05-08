@@ -49,7 +49,6 @@
             <div class="enviado-icono">✅</div>
             <h2>¡Formulario enviado!</h2>
             <p>Un asesor se comunicará contigo a la brevedad.</p>
-            <p class="enviado-costo">El costo de asesoría es de <strong>$500 MXN</strong></p>
             <a href="{{ route('tramites.index') }}" class="btn-enviar" style="display:inline-block; margin-top:20px; text-decoration:none; padding:12px 32px;">
                 Volver al inicio
             </a>
@@ -67,7 +66,7 @@
             </div>
         @endif
 
-        <form action="{{ route('tramites.solicitud.enviar', $slug) }}" method="POST">
+        <form action="{{ route('tramites.solicitud.enviar', [$slug, $token]) }}" method="POST">
             @csrf
 
             <div class="campo-form">
@@ -82,12 +81,27 @@
 
             <div class="campo-form">
                 <label>Teléfono</label>
-                <input type="tel" name="telefono" value="{{ old('telefono') }}" placeholder="Ej. 3312345678" required>
+                <input type="tel" name="telefono" id="telefono"
+                       value="{{ old('telefono') }}"
+                       placeholder="Ej. 3312345678"
+                       maxlength="10"
+                       pattern="\d{10}"
+                       inputmode="numeric"
+                       required>
+                <span id="telefono-error" style="display:none; font-size:0.8rem; color:#c0392b;">
+                    Debe componerse de 10 dígitos.
+                </span>
             </div>
 
             <div class="campo-form">
                 <label>Correo electrónico</label>
-                <input type="email" name="correo" value="{{ old('correo') }}" placeholder="Ej. juan@gmail.com" required>
+                <input type="email" name="correo" id="correo"
+                       value="{{ old('correo') }}"
+                       placeholder="Ej. juan@gmail.com"
+                       required>
+                <span id="correo-error" style="display:none; font-size:0.8rem; color:#c0392b;">
+                    Ingresa un correo válido.
+                </span>
             </div>
 
             <div class="direccion-separador">
@@ -96,11 +110,22 @@
                 <div class="grid-cp">
                     <div class="campo-form">
                         <label>Código postal</label>
-                        <input type="text" name="cp" value="{{ old('cp') }}" placeholder="Ej. 44100" maxlength="5" required>
+                        <input type="text" name="cp" id="cp" value="{{ old('cp') }}"
+                               placeholder="Ej. 44100" maxlength="5"
+                               autocomplete="off" required>
+                        <span id="cp-cargando" style="display:none; font-size:0.8rem; color:#666;">
+                            🔍 Buscando...
+                        </span>
+                        <span id="cp-error" style="display:none; font-size:0.8rem; color:#c0392b;"></span>
                     </div>
                     <div class="campo-form">
                         <label>Colonia</label>
-                        <input type="text" name="colonia" value="{{ old('colonia') }}" placeholder="Ej. Centro" required>
+                        {{-- Se reemplaza dinámicamente por JS --}}
+                        <input type="text" name="colonia" id="colonia-input"
+                               value="{{ old('colonia') }}" placeholder="Ej. Centro" required>
+                        <select name="colonia" id="colonia-select"
+                                style="display:none; width:100%; padding:10px 14px; border:1px solid #ccc; border-radius:8px; font-size:0.95rem;">
+                        </select>
                     </div>
                 </div>
 
@@ -112,11 +137,13 @@
                 <div class="grid-2">
                     <div class="campo-form">
                         <label>Municipio</label>
-                        <input type="text" name="municipio" value="{{ old('municipio') }}" placeholder="Ej. Guadalajara" required>
+                        <input type="text" name="municipio" id="municipio"
+                               value="{{ old('municipio') }}" placeholder="Ej. Guadalajara" required>
                     </div>
                     <div class="campo-form">
                         <label>Estado</label>
-                        <input type="text" name="estado" value="{{ old('estado') }}" placeholder="Ej. Jalisco" required>
+                        <input type="text" name="estado" id="estado"
+                               value="{{ old('estado') }}" placeholder="Ej. Jalisco" required>
                     </div>
                 </div>
             </div>

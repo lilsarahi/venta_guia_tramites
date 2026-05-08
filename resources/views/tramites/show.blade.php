@@ -157,7 +157,7 @@ document.getElementById('modal-video')?.addEventListener('click', function(e) {
                     <button type="submit" style="width:100%;">💳 Pagar y ver guía completa</button>
                 </form>
 
-                <a href="{{ route('tramites.solicitud', $tramite->slug) }}" class="btn-comenzar">
+                <a href="{{ route('tramites.pago.asesor', $tramite->slug) }}" class="btn-comenzar">
                     🧾 Comenzar trámite
                 </a>
             </div>

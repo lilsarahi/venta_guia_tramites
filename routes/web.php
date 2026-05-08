@@ -99,7 +99,22 @@ Route::get('/tramite/{slug}/pdf/{token}',
     [App\Http\Controllers\TramiteController::class, 'descargarPdf']
 )->name('tramites.pdf');
 
-Route::get('/tramites/{slug}/solicitud', [TramiteController::class, 'solicitudForm'])->name('tramites.solicitud');
+// Vista de pago de asesoría (previa al formulario)
+Route::get('/tramites/{slug}/pago-asesor', [TramiteController::class, 'pagoAsesorForm'])
+    ->name('tramites.pago.asesor');
 
-Route::get('/tramites/{slug}/solicitud', [TramiteController::class, 'solicitudForm'])->name('tramites.solicitud');
-Route::post('/tramites/{slug}/solicitud', [TramiteController::class, 'solicitudEnviar'])->name('tramites.solicitud.enviar');
+// Formulario de solicitud — requiere token de pago de asesoría
+Route::get('/tramites/{slug}/solicitud/{token}', [TramiteController::class, 'solicitudForm'])
+    ->name('tramites.solicitud');
+Route::post('/tramites/{slug}/solicitud/{token}', [TramiteController::class, 'solicitudEnviar'])
+    ->name('tramites.solicitud.enviar');
+
+// Pago de asesoría con MercadoPago
+Route::post('/tramite/{slug}/pago-asesor', [PagoController::class, 'iniciarPagoAsesor'])
+    ->name('pago.asesor.iniciar');
+Route::get('/tramite/{slug}/pago-asesor/exito', [PagoController::class, 'exitoAsesor'])
+    ->name('pago.asesor.exito');
+Route::get('/tramite/{slug}/pago-asesor/fallido', [PagoController::class, 'fallidoAsesor'])
+    ->name('pago.asesor.fallido');
+Route::get('/tramite/{slug}/pago-asesor/pendiente', [PagoController::class, 'pendienteAsesor'])
+    ->name('pago.asesor.pendiente');

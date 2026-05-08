@@ -2,7 +2,7 @@
     "slug": "seguro-social-primera-vez",
     "nombre": "Seguro Social Americano — Primera Vez",
     "descripcion_corta": "Si te acabas de hacer ciudadano americano, tramita tu Número de Seguro Social.",
-    "precio": 49.00,
+    "precio": 49.0,
     "activo": true,
     "gancho": "Recuerda que si te acabas de hacer ciudadano americano, es necesario que tramites tu Número de Seguro Social. Aquí te mostramos la información necesaria para que comiences a gozar sus beneficios.",
     "informacion_general": "Te dejamos una guía rápida y sencilla para que no se te olvide ningún documento el día de tu cita.",
@@ -23,5 +23,7 @@
     "preguntas_frecuentes": [],
     "nota_preguntas": null,
     "liga_oficial": null,
-    "video": ""
+    "video": "",
+    "imagen": "segurosocial.jpg",
+    "categoria": "Seguro Social · Primera vez"
 }

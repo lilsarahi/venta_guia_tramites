@@ -2,7 +2,7 @@
     "slug": "pasaporte-americano",
     "nombre": "Pasaporte Americano",
     "descripcion_corta": "Todo ciudadano americano puede obtener su pasaporte desde México.",
-    "precio": 49.00,
+    "precio": 49.0,
     "activo": true,
     "gancho": "Recuerda que todo ciudadano americano (por nacimiento o naturalización) puede obtener su Pasaporte Americano desde México, siempre y cuando tenga estos documentos…",
     "informacion_general": "El día de la cita es muy importante llevar los documentos que se indican a continuación. De todo llevar original y copia. Recuerda que es un derecho que tienes como ciudadano americano.",
@@ -23,9 +23,13 @@
             ]
         }
     ],
-    "avisos": ["Tu pasaporte te lo envían a una sucursal de DHL, prepárate para saber cuál es la más cercana."],
+    "avisos": [
+        "Tu pasaporte te lo envían a una sucursal de DHL, prepárate para saber cuál es la más cercana."
+    ],
     "preguntas_frecuentes": [],
     "nota_preguntas": null,
     "liga_oficial": null,
-    "video": ""
+    "video": "",
+    "imagen": "pasamericano.jpg",
+    "categoria": "Pasaporte · EE.UU."
 }

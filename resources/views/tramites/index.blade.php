@@ -62,14 +62,22 @@
     <div class="cards">
         @forelse($tramites as $tramite)
             <div class="card">
-                <div class="card-image">
-                    <p class="card-gancho">{{ $tramite->gancho }}</p>
+                <div class="card-img-wrap">
+                    @if(!empty($tramite->imagen))
+                        <img src="{{ asset('img/tramites/' . $tramite->imagen) }}" alt="{{ $tramite->nombre }}">
+                    @else
+                        <img src="{{ asset('img/tramites/default.jpg') }}" alt="{{ $tramite->nombre }}">
+                    @endif
+                    <div class="card-img-overlay"></div>
+                    @if(!empty($tramite->categoria))
+                        <span class="card-pill">{{ $tramite->categoria }}</span>
+                    @endif
                 </div>
                 <div class="card-content">
                     <h4>{{ $tramite->nombre }}</h4>
-                    <p>{{ Str::limit($tramite->descripcion_corta, 100) }}</p>
-                    <a href="{{ route('tramites.show', $tramite->slug) }}">
-                        <button>Ver guía</button>
+                    <p>{{ $tramite->gancho }}</p>
+                    <a href="{{ route('tramites.show', $tramite->slug) }}" class="btn-ver">
+                        Ver guía &rarr;
                     </a>
                 </div>
             </div>

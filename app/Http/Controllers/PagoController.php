@@ -34,6 +34,8 @@ class PagoController extends Controller
         MercadoPagoConfig::setAccessToken($accessToken);
     }
 
+    // ─── PAGO DE GUÍA ────────────────────────────────────────────────────────
+
     public function iniciarPago(Request $request, string $slug)
     {
         $tramite = $this->cargarTramite($slug);
@@ -46,12 +48,12 @@ class PagoController extends Controller
 
         $token = Str::random(40);
 
-        // ✅ Creamos registro usando TU estructura real
         $pago = Pago::create([
-            'slug'          => $slug,
-            'token_acceso'  => $token,
-            'estado'        => 'pendiente',
-            'monto'         => $tramite->precio,
+            'slug'         => $slug,
+            'token_acceso' => $token,
+            'estado'       => 'pendiente',
+            'monto'        => $tramite->precio,
+            'tipo'         => 'guia',
         ]);
 
         $client = new PreferenceClient();
@@ -61,9 +63,9 @@ class PagoController extends Controller
             $preference = $client->create([
                 "items" => [
                     [
-                        "title" => $tramite->nombre,
-                        "quantity" => 1,
-                        "unit_price" => (float) $tramite->precio,
+                        "title"       => $tramite->nombre,
+                        "quantity"    => 1,
+                        "unit_price"  => (float) $tramite->precio,
                         "currency_id" => "MXN"
                     ]
                 ],
@@ -79,7 +81,6 @@ class PagoController extends Controller
                 "auto_return" => "approved",
             ]);
 
-            // ✅ Guardamos el preference_id
             $pago->update([
                 'mp_preference_id' => $preference->id
             ]);
@@ -149,6 +150,122 @@ class PagoController extends Controller
         return redirect()->route('tramites.show', $slug)
             ->with('info', 'Pago pendiente.');
     }
+
+    // ─── PAGO DE ASESORÍA ────────────────────────────────────────────────────
+
+    public function iniciarPagoAsesor(Request $request, string $slug)
+    {
+        $tramite = $this->cargarTramite($slug);
+
+        if (!$tramite) {
+            abort(404);
+        }
+
+        $this->configurarMercadoPago();
+
+        $token = Str::random(40);
+
+        $pago = Pago::create([
+            'slug'         => $slug,
+            'token_acceso' => $token,
+            'estado'       => 'pendiente',
+            'monto'        => 500,
+            'tipo'         => 'asesoria',
+        ]);
+
+        $client = new PreferenceClient();
+
+        try {
+
+            $preference = $client->create([
+                "items" => [
+                    [
+                        "title"       => "Asesoría: " . $tramite->nombre,
+                        "quantity"    => 1,
+                        "unit_price"  => 500.00,
+                        "currency_id" => "MXN",
+                    ]
+                ],
+
+                "external_reference" => $token,
+
+                "back_urls" => [
+                    "success" => route('pago.asesor.exito', $slug),
+                    "failure" => route('pago.asesor.fallido', $slug),
+                    "pending" => route('pago.asesor.pendiente', $slug),
+                ],
+
+                "auto_return" => "approved",
+            ]);
+
+            $pago->update(['mp_preference_id' => $preference->id]);
+
+            return redirect($preference->init_point);
+
+        } catch (MPApiException $e) {
+
+            $response = $e->getApiResponse();
+
+            if ($response) {
+                dd($response->getContent());
+            }
+
+            dd($e->getMessage());
+        }
+    }
+
+    public function exitoAsesor(Request $request, string $slug)
+    {
+        $paymentId = $request->query('payment_id')
+            ?? $request->query('collection_id');
+
+        if (!$paymentId) {
+            return redirect()->route('tramites.pago.asesor', $slug)
+                ->with('error', 'No se recibió confirmación de pago.');
+        }
+
+        $this->configurarMercadoPago();
+
+        $paymentClient = new PaymentClient();
+        $payment = $paymentClient->get((int) $paymentId);
+
+        if ($payment->status === 'approved') {
+
+            $pago = Pago::where('token_acceso', $payment->external_reference)
+                ->where('tipo', 'asesoria')
+                ->first();
+
+            if ($pago) {
+                $pago->update([
+                    'estado'        => 'completado',
+                    'mp_payment_id' => $payment->id,
+                    'pagado_en'     => now(),
+                ]);
+
+                return redirect()->route('tramites.solicitud', [
+                    'slug'  => $slug,
+                    'token' => $pago->token_acceso,
+                ])->with('success', '¡Pago confirmado! Completa tu solicitud.');
+            }
+        }
+
+        return redirect()->route('tramites.pago.asesor', $slug)
+            ->with('error', 'El pago no fue aprobado. Intenta de nuevo.');
+    }
+
+    public function fallidoAsesor(string $slug)
+    {
+        return redirect()->route('tramites.pago.asesor', $slug)
+            ->with('error', 'El pago fue cancelado.');
+    }
+
+    public function pendienteAsesor(string $slug)
+    {
+        return redirect()->route('tramites.pago.asesor', $slug)
+            ->with('info', 'Tu pago está pendiente de confirmación.');
+    }
+
+    // ─── WEBHOOK ─────────────────────────────────────────────────────────────
 
     public function webhook(Request $request)
     {

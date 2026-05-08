@@ -115,7 +115,10 @@ class TramiteController extends Controller
     return $pdf->download("guia-{$slug}.pdf");
 }
 
-public function solicitudForm(string $slug)
+/**
+ * Vista de pago de asesoría ($500 MXN) — previa al formulario de solicitud
+ */
+public function pagoAsesorForm(string $slug)
 {
     $tramite = $this->cargarTramite($slug);
 
@@ -123,24 +126,62 @@ public function solicitudForm(string $slug)
         abort(404);
     }
 
-    return view('tramites.solicitud', compact('tramite', 'slug'));
+    return view('tramites.pagoasesor', compact('tramite', 'slug'));
 }
 
-
-
-public function solicitudEnviar(Request $request, string $slug)
+/**
+ * Formulario de solicitud — solo accesible con token de pago de asesoría aprobado
+ */
+public function solicitudForm(string $slug, string $token)
 {
     $tramite = $this->cargarTramite($slug);
 
     if (!$tramite) {
         abort(404);
+    }
+
+    // Verificar que el token corresponde a un pago de asesoría aprobado
+    $pago = Pago::where('slug', $slug)
+        ->where('token_acceso', $token)
+        ->where('estado', 'completado')
+        ->where('tipo', 'asesoria')
+        ->first();
+
+    if (!$pago) {
+        return redirect()->route('tramites.pago.asesor', $slug)
+            ->with('error', 'Debes completar el pago de asesoría para acceder al formulario.');
+    }
+
+    return view('tramites.solicitud', compact('tramite', 'slug', 'token'));
+}
+
+
+
+public function solicitudEnviar(Request $request, string $slug, string $token)
+{
+    $tramite = $this->cargarTramite($slug);
+
+    if (!$tramite) {
+        abort(404);
+    }
+
+    // Re-verificar el token antes de procesar el envío
+    $pago = Pago::where('slug', $slug)
+        ->where('token_acceso', $token)
+        ->where('estado', 'completado')
+        ->where('tipo', 'asesoria')
+        ->first();
+
+    if (!$pago) {
+        return redirect()->route('tramites.pago.asesor', $slug)
+            ->with('error', 'Sesión expirada. Por favor vuelve a iniciar el proceso.');
     }
 
     $request->validate([
         'nombre'    => 'required|string|max:255',
         'fecha_nac' => 'required|date',
-        'telefono'  => 'required|string|max:20',
-        'correo'    => 'required|email|max:255',
+        'telefono'  => 'required|digits:10',
+        'correo'    => 'required|email:rfc,dns|max:255',
         'cp'        => 'required|string|max:10',
         'colonia'   => 'required|string|max:255',
         'calle'     => 'required|string|max:255',
@@ -156,7 +197,7 @@ public function solicitudEnviar(Request $request, string $slug)
     Mail::to('sarahiortizsilva@gmail.com')
         ->send(new SolicitudTramite($datos, $tramite->nombre));
 
-    return redirect()->route('tramites.solicitud', $slug)
+    return redirect()->route('tramites.solicitud', [$slug, $token])
         ->with('enviado', true);
 }
 

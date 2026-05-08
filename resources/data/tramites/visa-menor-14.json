@@ -2,7 +2,7 @@
     "slug": "visa-menor-14",
     "nombre": "Visa Menor de 14 Años",
     "descripcion_corta": "Desde octubre 2025, los menores de 14 años deben presentarse a entrevista consular.",
-    "precio": 49.00,
+    "precio": 49.0,
     "activo": true,
     "gancho": "A partir del 1 de octubre del 2025, la política de emisión de visas para menores de 14 años cambió (tanto renovación como primera vez), requiriendo que se presenten a entrevista consular. Aquí te dejamos una guía básica y rápida para que su entrevista sea exitosa.",
     "informacion_general": "El menor regularmente no es entrevistado, así que papá o mamá, ve preparado para ser tú el entrevistado. Se recomienda que asista el padre que tiene visa vigente, y si son ambos, cualquiera de los dos.",
@@ -17,7 +17,9 @@
             ]
         }
     ],
-    "avisos": ["No todas las personas tienen todos los documentos, asegúrate de llevar la mayor cantidad que puedas reunir."],
+    "avisos": [
+        "No todas las personas tienen todos los documentos, asegúrate de llevar la mayor cantidad que puedas reunir."
+    ],
     "preguntas_frecuentes": [
         "¿A qué quieren ir?",
         "¿A qué te estás dedicando?",
@@ -25,5 +27,7 @@
     ],
     "nota_preguntas": "Recuerda siempre ser honesto.",
     "liga_oficial": null,
-    "video": ""
+    "video": "",
+    "imagen": "visamenor.jpeg",
+    "categoria": "Visa · Menores"
 }

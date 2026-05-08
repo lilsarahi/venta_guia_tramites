@@ -2,7 +2,7 @@
     "slug": "pension-americana",
     "nombre": "Pensión Americana",
     "descripcion_corta": "Si trabajaste en EUA con Seguro Social americano, puedes tener derecho a una pensión.",
-    "precio": 49.00,
+    "precio": 49.0,
     "activo": true,
     "gancho": "Si tú o algún familiar trabajaron en Estados Unidos con un número de Seguro Social Americano oficial, tienen derecho a recibir una pensión bajo ciertas condiciones. Si quieres saber más o comenzar tu petición, ingresa…",
     "informacion_general": "Te dejamos una guía básica de los documentos que debes llevar según el tipo de pensión que estés tramitando. De todo llevar original y copia.",
@@ -36,5 +36,7 @@
     "preguntas_frecuentes": [],
     "nota_preguntas": null,
     "liga_oficial": null,
-    "video": ""
+    "video": "",
+    "imagen": "pensioname.jpg",
+    "categoria": "Beneficios · SSA"
 }

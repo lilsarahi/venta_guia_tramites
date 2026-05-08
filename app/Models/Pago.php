@@ -12,6 +12,7 @@ class Pago extends Model
         'mp_preference_id',
         'mp_payment_id',
         'estado',
+        'tipo',
         'monto',
         'pagado_en'
     ];

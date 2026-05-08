@@ -2,7 +2,7 @@
     "slug": "crba",
     "nombre": "CRBA — Ciudadanía Americana para Menores",
     "descripcion_corta": "Un padre ciudadano americano puede darle la ciudadanía a su hijo menor de 18 años.",
-    "precio": 49.00,
+    "precio": 49.0,
     "activo": true,
     "gancho": "Logra que tu hijo o hija sean ciudadanos americanos con un solo trámite. Un CRBA es un trámite en el cual un padre ciudadano americano puede darle la ciudadanía a un menor de 18 años, siempre y cuando tenga…",
     "informacion_general": "Si ya tienes todo listo para tu cita de CRBA pero no sabes qué documentos llevar o qué te preguntarán, aquí te dejamos una guía rápida y fácil.",
@@ -22,7 +22,9 @@
             ]
         }
     ],
-    "avisos": ["El bebé debe ir a la cita."],
+    "avisos": [
+        "El bebé debe ir a la cita."
+    ],
     "preguntas_frecuentes": [
         "¿Cómo se conocieron?",
         "¿Dónde has trabajado?",
@@ -31,5 +33,7 @@
     ],
     "nota_preguntas": "Vayan preparados, las preguntas serán para ambos padres.",
     "liga_oficial": null,
-    "video": ""
+    "video": "",
+    "imagen": "crba.jpg",
+    "categoria": "Ciudadanía · Menores"
 }
