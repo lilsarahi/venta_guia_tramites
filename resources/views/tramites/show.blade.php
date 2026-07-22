@@ -8,15 +8,6 @@
     @vite('resources/js/app.js')
 </head>
 
-<script>
-function cerrarVideo() {
-    document.getElementById('modal-video').style.display = 'none';
-    document.getElementById('player-video').pause();
-}
-
-document.getElementById('modal-video')?.addEventListener('click', function(e) {
-    if (e.target === this) cerrarVideo();
-});
 </script>
 
 <body>
@@ -49,98 +40,140 @@ document.getElementById('modal-video')?.addEventListener('click', function(e) {
 
 <div class="detalle-wrap">
 
-    <p class="breadcrumb">
-        <a href="{{ route('tramites.index') }}">Inicio</a> / {{ $tramite->nombre }}
-    </p>
+    {{-- ── HERO CON IMAGEN ── --}}
+    <div class="detalle-hero">
+        @if(!empty($tramite->imagen))
+            <img
+                src="{{ asset('img/tramites/' . $tramite->imagen) }}"
+                alt="{{ $tramite->nombre }}"
+                class="detalle-hero-img"
+            >
+        @endif
+        <div class="detalle-hero-overlay"></div>
 
-    <h1 class="detalle-titulo">{{ $tramite->nombre }}</h1>
+        @if(!empty($tramite->categoria))
+            <span class="detalle-hero-pill">{{ $tramite->categoria }}</span>
+        @endif
 
+        @if($accesoDesbloqueado && $token)
+            <span class="detalle-hero-badge-paid">✓ Acceso desbloqueado</span>
+        @endif
+
+        <div class="detalle-hero-content">
+            <p class="breadcrumb">
+                <a href="{{ route('tramites.index') }}">Inicio</a> / {{ $tramite->nombre }}
+            </p>
+            <h1 class="detalle-titulo">{{ $tramite->nombre }}</h1>
+
+            @if($accesoDesbloqueado && $token)
+                <div class="detalle-hero-actions">
+                    <a href="{{ route('tramites.pdf', [$slug, $token]) }}" class="btn-pdf">
+                        📥Descargar guía en PDF
+                    </a>
+                    @if(!empty($tramite->video))
+                        <button onclick="document.getElementById('modal-video').style.display='flex'" class="btn-video">
+                            ▶ Ver video
+                        </button>
+                    @endif
+                </div>
+            @endif
+        </div>
+    </div>
+
+    {{-- ── MODAL VIDEO ── --}}
+    @if($accesoDesbloqueado && $token && !empty($tramite->video))
+        <div id="modal-video" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:999; align-items:center; justify-content:center;">
+            <div style="position:relative; width:90%; max-width:800px;">
+                <button onclick="cerrarVideo()" style="position:absolute; top:-40px; right:0; background:none; border:none; color:white; font-size:28px; cursor:pointer;">✕</button>
+                <video id="player-video" controls style="width:100%; border-radius:12px;">
+                    <source src="{{ asset('videos/' . $tramite->video) }}" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    @endif
+
+    {{-- ── DESCRIPCIÓN ── --}}
     <div class="detalle-descripcion">
         {{ $tramite->descripcion_corta }}
     </div>
 
     @if($accesoDesbloqueado && $token)
 
-        <div class="badge-desbloqueado">
-            <span><strong>Pago confirmado.</strong> Tienes acceso completo a la información.</span>
-        </div>
+        {{-- ── CONTENIDO DESBLOQUEADO ── --}}
+        <div class="contenido-tramite">
 
-        <a href="{{ route('tramites.pdf', [$slug, $token]) }}" class="btn-pdf">
-            📥 Descargar guía en PDF
-        </a>
-        @if(!empty($tramite->video))
-            <button onclick="document.getElementById('modal-video').style.display='flex'" class="btn-video">
-                ▶ Ver video informativo
-            </button>
-
-            <div id="modal-video" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:999; align-items:center; justify-content:center;">
-                <div style="position:relative; width:90%; max-width:800px;">
-                    <button onclick="cerrarVideo()" style="position:absolute; top:-40px; right:0; background:none; border:none; color:white; font-size:28px; cursor:pointer;">✕</button>
-                    <video id="player-video" controls style="width:100%; border-radius:12px;">
-                        <source src="{{ asset('videos/' . $tramite->video) }}" type="video/mp4">
-                    </video>
+            <div class="contenido-header">
+                <div class="contenido-header-icon">📋</div>
+                <div>
+                    <div class="contenido-header-title">Guía completa</div>
+                    <div class="contenido-header-sub">Información oficial actualizada</div>
                 </div>
             </div>
-        @endif
 
-        <div class="contenido-tramite">
-            <p>{{ $tramite->informacion_general }}</p>
+            <div class="contenido-info-general">
+                <p>{{ $tramite->informacion_general }}</p>
+            </div>
 
             @foreach($tramite->categorias_documentos as $categoria)
-                <h3>{{ $categoria->titulo }}</h3>
-                <ul>
-                    @foreach($categoria->documentos as $doc)
-                        <li>{{ $doc }}</li>
-                    @endforeach
-                </ul>
+                <div class="contenido-seccion">
+                    <div class="contenido-seccion-label"> {{ $categoria->titulo }}</div>
+                    <ul class="doc-list">
+                        @foreach($categoria->documentos as $index => $doc)
+                            <li class="doc-item">
+                                <span class="doc-num">{{ $index + 1 }}</span>
+                                {{ $doc }}
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
             @endforeach
 
             @if(!empty($tramite->avisos))
-                <div class="aviso-importante">
+                <div class="contenido-seccion">
+                    <div class="contenido-seccion-label">⚠️ Avisos importantes</div>
                     @foreach($tramite->avisos as $aviso)
-                        <p>NOTA: {{ $aviso }}</p>
+                        <div class="aviso-card">
+                            
+                            {{ $aviso }}
+                        </div>
                     @endforeach
                 </div>
             @endif
 
             @if(!empty($tramite->preguntas_frecuentes))
-                <h3>Preguntas frecuentes en la entrevista</h3>
-                <ul>
-                    @foreach($tramite->preguntas_frecuentes as $pregunta)
-                        <li>{{ $pregunta }}</li>
-                    @endforeach
-                </ul>
-                @if($tramite->nota_preguntas)
-                    <p><em>{{ $tramite->nota_preguntas }}</em></p>
-                @endif
+                <div class="contenido-seccion">
+                    <div class="contenido-seccion-label">💬 Preguntas frecuentes en la entrevista</div>
+                    <ul class="doc-list">
+                        @foreach($tramite->preguntas_frecuentes as $index => $pregunta)
+                            <li class="doc-item">
+                                <span class="doc-num">{{ $index + 1 }}</span>
+                                {{ $pregunta }}
+                            </li>
+                        @endforeach
+                    </ul>
+                    @if($tramite->nota_preguntas)
+                        <p class="nota-preguntas"><em>{{ $tramite->nota_preguntas }}</em></p>
+                    @endif
+                </div>
             @endif
 
             @if(!empty($tramite->liga_oficial))
-                <p>🔗 Sitio oficial:
-                    <a href="{{ $tramite->liga_oficial }}" target="_blank">{{ $tramite->liga_oficial }}</a>
-                </p>
+                <div class="contenido-seccion">
+                    <div class="contenido-seccion-label">🔗 Sitio oficial</div>
+                    <a href="{{ $tramite->liga_oficial }}" target="_blank" class="link-oficial">
+                        {{ $tramite->liga_oficial }} ↗
+                    </a>
+                </div>
             @endif
+
         </div>
 
     @else
 
+        {{-- ── VISTA BLOQUEADA ── --}}
         <div class="preview-blur">
             <p>{{ $tramite->informacion_general }}</p>
         </div>
-{{-- 
-        <div class="caja-pago">
-            <div class="lock-icon">🔒</div>
-            <h2>Guía completa</h2>
-            <div class="precio-grande">
-                ${{ number_format($tramite->precio, 0) }}
-                <span class="moneda">MXN</span>
-            </div>
-            <p class="nota-precio">Pago único, sin suscripción</p>
-            <form action="{{ route('pago.iniciar', $tramite->slug) }}" method="POST">
-                @csrf
-                <button type="submit">💳 Pagar y ver guía completa</button>
-            </form>
-        </div> --}}
 
         <div class="caja-pago">
             <div class="lock-icon">🔒</div>
@@ -151,7 +184,7 @@ document.getElementById('modal-video')?.addEventListener('click', function(e) {
             </div>
             <p class="nota-precio">Pago único, sin suscripción</p>
 
-            <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:8px;">
+            <div class="pago-btns">
                 <form action="{{ route('pago.iniciar', $tramite->slug) }}" method="POST" style="flex:1;">
                     @csrf
                     <button type="submit" style="width:100%;">💳 Pagar y ver guía completa</button>
@@ -165,11 +198,24 @@ document.getElementById('modal-video')?.addEventListener('click', function(e) {
 
         <div class="incluye">
             <h3>¿Qué incluye esta guía?</h3>
-            <ul>
-                <li>Lista completa de requisitos por tipo de trámite</li>
-                <li>Documentos oficiales actualizados</li>
-                <li>PDF imprimible descargable</li>
-            </ul>
+            <div class="incluye-grid">
+                <div class="incluye-item">
+                    <span class="incluye-check">✓</span>
+                    Lista completa de requisitos
+                </div>
+                <div class="incluye-item">
+                    <span class="incluye-check">✓</span>
+                    Documentos oficiales actualizados
+                </div>
+                <div class="incluye-item">
+                    <span class="incluye-check">✓</span>
+                    PDF descargable
+                </div>
+                <div class="incluye-item">
+                    <span class="incluye-check">✓</span>
+                    Acceso inmediato
+                </div>
+            </div>
         </div>
 
     @endif
@@ -177,6 +223,21 @@ document.getElementById('modal-video')?.addEventListener('click', function(e) {
 </div>
 
 <footer></footer>
+
+<script>
+function cerrarVideo() {
+    const modal = document.getElementById('modal-video');
+    const player = document.getElementById('player-video');
+    if (modal) modal.style.display = 'none';
+    if (player) player.pause();
+}
+const modalVideo = document.getElementById('modal-video');
+if (modalVideo) {
+    modalVideo.addEventListener('click', function(e) {
+        if (e.target === this) cerrarVideo();
+    });
+}
+</script>
 
 </body>
 </html>
